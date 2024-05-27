@@ -3,16 +3,17 @@ package com.trainee.bookmanagement.service;
 import com.trainee.bookmanagement.NotFoundException;
 import com.trainee.bookmanagement.model.Books;
 import com.trainee.bookmanagement.repository.BooksRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
 public class BooksService {
+  private final BooksRepository booksRepository;
 
-  @Autowired
-  private BooksRepository booksRepository;
+  public BooksService(BooksRepository booksRepository) {
+    this.booksRepository = booksRepository;
+  }
 
   public List<Books> list() {
     return booksRepository.findAll();
